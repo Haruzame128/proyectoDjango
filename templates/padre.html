@@ -42,7 +42,7 @@
   </head>
   <body>
     <header>
-      <h1>Bienvenido a mi Página</h1>
+      <h1>{% block title %} Bienvenido a mi Página {% endblock %}</h1>
       <p>Esta es una página HTML de muestra</p>
     </header>
 
@@ -53,11 +53,13 @@
     </nav>
 
     <main>
+      {%block content%}
       <h2>Contenido Principal</h2>
       <p>Este es un ejemplo básico de cómo se estructura una página HTML.</p>
       <p>
         Puedes personalizarla agregando imágenes, listas, formularios y más.
       </p>
+      {% endblock %}
     </main>
 
     <footer>&copy; 2025 Mi Sitio Web. Todos los derechos reservados.</footer>

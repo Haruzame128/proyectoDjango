@@ -11,3 +11,13 @@ class Familiar(models.Model):
 
     def __str__(self):
         return f"{self.nombre} {self.apellido} ({self.parentesco}) Edad: {self.edad}), Fecha de Nacimiento: {self.fecha_nacimiento}"
+
+
+class Curso(models.Model):
+    nombre = models.CharField(max_length=100)
+    descripcion = models.TextField(blank=True, null=True)
+    duracion_semanas = models.IntegerField(default=4)
+    fecha_inicio = models.DateField()
+    activo = models.BooleanField(default=True)
+    def __str__(self):
+        return self.nombre
