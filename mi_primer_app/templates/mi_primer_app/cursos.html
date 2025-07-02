@@ -1,0 +1,25 @@
+{% extends "padre.html" %}
+
+{% block title %}Cursos{% endblock %}
+
+{% block content %}
+
+<form method="GET" action="{% url 'buscar_cursos' %}" >
+    <label for="nombre">Buscar Curso:</label>
+    <input type="text" id="nombre" name="nombre" value="{{ nombre|default:'' }}" placeholder="Ingrese el nombre del curso">
+    <button type="submit">Buscar</button>
+</form>
+
+<h2>Lista de Cursos</h2>
+
+{% if cursos %}
+    <ul>
+        {% for curso in cursos %}
+            <li>{{ curso.nombre }} - {{ curso.descripcion }} - Activo: {{ curso.activo }}</li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No se encontraron cursos.</p>
+{% endif %}
+
+{%endblock%}

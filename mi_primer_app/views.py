@@ -35,3 +35,15 @@ def crear_curso(request):
     else:
         form = CursoForm()
         return render(request, 'mi_primer_app/crear-curso.html', {'form': form})
+
+def buscar_cursos(request):
+    if request.method == 'GET':
+        nombre = request.GET.get('nombre', '')
+        cursos = Curso.objects.filter(nombre__icontains=nombre)
+        return render(request, 'mi_primer_app/cursos.html', {'cursos': cursos, 'nombre': nombre})
+    else:
+        return redirect('inicio')
+    
+def cursos(request):
+    cursos = Curso.objects.all()
+    return render(request, 'mi_primer_app/cursos.html', {'cursos': cursos, 'nombre': ''})
